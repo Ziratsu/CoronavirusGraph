@@ -3,18 +3,29 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100vh;
 }
+
 h1 {
     text-align: center;
     color: crimson;
     font-size: 50px;
-    margin: 50px 0 100px;
+    margin: 50px 0 50px 0;
 }
-
-#my_dataviz svg {
+#graphique {
+    width: 1000px;
+    height: 900px;
+    margin: 0 auto;
+}
+#graphique svg {
     display: block;
-    margin: 50px auto 0 auto;
+    margin: 20px auto 0 auto;
     
+}
+#graphique p {
+    color: #f1f1f1;
+    margin-left: 50px;
 }
 .axisWhite {
     fill: #f1f1f1;
@@ -25,15 +36,71 @@ h1 {
 div.tooltip {	
     position: absolute;			
     text-align: center;			
-    width: 60px;					
+    width: 70px;					
     height: 28px;					
     padding: 2px;				
-    font: 12px sans-serif;		
-    background: lightsteelblue;	
+    font: 14px sans-serif;		
+    background: #f1f1f1;	
     border: 0px;		
     border-radius: 8px;			
     pointer-events: none;		
     display: flex;
     justify-content: center;
     align-items: center;	
+}
+
+/* Map */
+h2 {
+    text-align: center;
+    color: crimson;
+    font-size: 40px;
+    margin: 50px 0 50px 0;
+}
+#map {
+    position: relative;
+    top: -100px;
+    width: 1000px;
+    height: 900px;
+    margin: 0 auto;
+}
+#map svg {
+    display: block;
+    margin: 0 auto;
+}
+#map p {
+    color: #f1f1f1;
+    text-align: center;
+}
+#info {
+    margin-top: 50px;
+}
+
+#deptinfo {
+    margin-top: 30px;
+}
+
+.departement {
+    cursor: pointer;
+    stroke: black;
+    stroke-width: 0.5px;
+}
+
+.departement:hover {
+    stroke-width: 2.5px;
+}
+
+div.tooltipMap {
+    position: absolute;
+    opacity:0.8;
+    z-index:1000;
+    text-align:left;
+    border-radius:4px;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    padding:8px;
+    color:#fff;
+    background-color:#000;
+    font: 12px sans-serif;
+    max-width: 300px;
+    height: 40px;
 }
