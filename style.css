@@ -10,22 +10,25 @@ body {
 h1 {
     text-align: center;
     color: crimson;
-    font-size: 50px;
+    font-size: 60px;
     margin: 50px 0 50px 0;
 }
 #graphique {
-    width: 1000px;
-    height: 900px;
+    width: 100%;
+    height: auto;
     margin: 0 auto;
+
 }
 #graphique svg {
     display: block;
     margin: 20px auto 0 auto;
-    
+    width: 1000px;
+    height: 600px;
 }
 #graphique p {
     color: #f1f1f1;
-    margin-left: 50px;
+    text-align: center;
+    font-size: 18px;
 }
 .axisWhite {
     fill: #f1f1f1;
@@ -36,10 +39,10 @@ h1 {
 div.tooltip {	
     position: absolute;			
     text-align: center;			
-    width: 70px;					
-    height: 28px;					
+    width: 80px;					
+    height: 38px;					
     padding: 2px;				
-    font: 14px sans-serif;		
+    font: 16px sans-serif;		
     background: #f1f1f1;	
     border: 0px;		
     border-radius: 8px;			
@@ -58,18 +61,19 @@ h2 {
 }
 #map {
     position: relative;
-    top: -100px;
-    width: 1000px;
-    height: 900px;
+    top: 0px;
     margin: 0 auto;
 }
 #map svg {
     display: block;
     margin: 0 auto;
+    width: 1000px;
+    height: 800px;
 }
 #map p {
     color: #f1f1f1;
     text-align: center;
+    font-size: 18px;
 }
 #info {
     margin-top: 50px;
@@ -103,4 +107,38 @@ div.tooltipMap {
     font: 12px sans-serif;
     max-width: 300px;
     height: 40px;
+}
+
+@media screen and (max-width:1000px) {
+    /* On remet width et height inital pour rendre responsive avec viewbox */
+    #graphique svg {
+        width: initial;
+        height: initial;
+    }
+    #map svg {
+        width: initial;
+        height: initial;
+    }
+}
+@media screen and (max-width:650px) {
+    #graphique p {
+        text-align: left;
+        margin-left: 20px;
+    }
+}
+@media screen and (max-width:400px) {
+    h1, h2 {
+        font-size: 35px;
+        margin: 20px 0 0 0;
+    }
+    #graphique p {
+        font-size: 16px;
+        margin-right: 10px;
+    }
+
+#map p {
+    font-size: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
 }
