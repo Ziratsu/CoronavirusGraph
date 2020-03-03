@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coronavirus Graph</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<h1>Coronavirus en France</h1>
+
+<div id="my_dataviz"></div>
+
+<script>
+
+  var margin = {top: 10, right: 40, bottom: 100, left: 60},
+      width = 1000 - margin.left - margin.right,
+      height = 600 - margin.top - margin.bottom;
+
+  var svg = d3.select("#my_dataviz")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+  d3.csv("data.csv",
+
+    function(d){
+      return { date : d3.timeParse("%Y-%m-%d")(d.date), value : d.value }
+    },
+
+
+    
+    function(data) {
+
+
+
+      console.log(data);
+      
+
+      var x = d3.scaleTime()
+        .domain(d3.extent(data, function(d) { return d.date; }))
+        .range([ 0, width ]);
+
+
+        const groupeX = svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .attr("class", "axisWhite")
+        .call(d3.axisBottom(x));
+
+      var y = d3.scaleLinear()
+        .domain( [0, 300])
+        .range([ height, 0 ]);
+        
+        const groupeY = svg.append("g")
+        .attr("class", "axisWhite")
+        .call(d3.axisLeft(y));
+      
+ 
+        const axeY = d3.axisLeft(y)
+                       .ticks(5);
+
+        groupeY.call(axeY)
+               .style('font-size', '14px')
+             
+        groupeY.selectAll('text')
+               .attr("fill", "white")
+   
+               var tickLabels = ['01 / 02',
+               '02 / 02',
+               '03 / 02',
+               '04 / 02',
+               '05 / 02',
+               '06 / 02',
+               '07 / 02',
+               '08 / 02',
+               '09 / 02',
+               '10 / 02',
+               '11 / 02',
+               '12 / 02',
+               '13 / 02',
+               '14 / 02',
+               '15 / 02',
+               '16 / 02',
+               '17 / 02',
+               '18 / 02',
+               '19 / 02',
+               '20 / 02',
+               '21 / 02',
+               '22 / 02',
+               '23 / 02',
+               '24 / 02',
+               '25 / 02',
+               '26 / 02',
+               '27 / 02',
+               '28 / 02',
+               '29 / 02',
+               '01 / 03',
+               '02 / 03',
+              ]
+
+        // X
+        const axeX = d3.axisBottom(x)
+                       .ticks(30)
+                       .tickFormat(function(d,i){ return tickLabels[i] });
+
+;
+
+        groupeX.call(axeX)
+               .style('font-size', '14px')
+
+          groupeX.selectAll('text')
+         .attr('transform', 'rotate(-30) translate(0,10)')
+         .attr("fill", "white")
+         .attr('text-anchor', 'end');
+
+
+      // Add the line
+      svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "crimson")
+        .attr("stroke-width", 1.5)
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.date) })
+          .y(function(d) { return y(d.value) })
+          )
+      // Add the points
+      svg
+        .append("g")
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+          .attr("cx", function(d) { return x(d.date) } )
+          .attr("cy", function(d) { return y(d.value) } )
+          .attr("r", 5)
+          .attr("fill", "crimson")
+          .on("mouseover", function(d) {		
+            div.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+            div	.html("Cas :" + d.value)	
+                .style("left", (d3.event.pageX) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px");	
+            })					
+        .on("mouseout", function(d) {		
+            div.transition()		
+                .duration(500)		
+                .style("opacity", 0);	
+        });
+
+
+var div = d3.select("body").append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);
+
+
+
+  })
+
+
+
+  </script>
+
+</body>
+</html>
