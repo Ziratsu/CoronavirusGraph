@@ -27,6 +27,14 @@
   <p>Vous pouvez survoler les départements pour avoir le nombre de cas.</p>
 </div>
 
+<div class="Credits">
+  <ul>
+    <li><p>Github  : <a target="_blank" href="https://github.com/Ziratsu/CoronavirusGraph">Repo Github</a></p></li>
+    <li><p>Youtube : <a target="_blank" href="https://www.youtube.com/channel/UCMFbNXUkjSUJ6WC20tGTzJg">Chaîne Youtube Développement Web</a></p></li>
+    <li><p>Twitter : <a target="_blank" href="https://twitter.com/Ledesignerduweb">Twitter</a></p></li>
+  </ul>
+
+</div>
 <script>
 
   var margin = {top: 10, right: 40, bottom: 100, left: 60},
@@ -85,7 +93,7 @@
         groupeY.selectAll('text')
                .attr("fill", "white")
    
-               var tickLabels = ['01 / 02',
+               var tickLabels = [
                '02 / 02',
                '03 / 02',
                '04 / 02',
@@ -116,6 +124,7 @@
                '29 / 02',
                '01 / 03',
                '02 / 03',
+               '03 / 03',
               ]
 
         // X
@@ -432,7 +441,7 @@ var div = d3.select("body").append("div")
           "NB_ARRONDS":"5",
           "NB_CANTONS":"51",
           "NB_COMMUNES":"472",
-          "POP":"0"},
+          "POP":"1"},
           
           {"CODE_REG":"24",
           "NOM_REGION":"Centre",
