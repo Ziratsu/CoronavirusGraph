@@ -108,7 +108,23 @@ div.tooltipMap {
     max-width: 300px;
     height: 40px;
 }
+.Credits {
 
+}
+ul {
+    width: 600px;
+    margin: 0 auto;
+}
+ul li {
+    list-style-type: none;
+}
+ul p {
+    color: #f1f1f1;
+    font-size: 20px;
+}
+ul p a {
+    color: #75d3eb;
+}
 @media screen and (max-width:1000px) {
     /* On remet width et height inital pour rendre responsive avec viewbox */
     #graphique svg {
