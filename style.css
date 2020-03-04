@@ -125,6 +125,25 @@ ul p {
 ul p a {
     color: #75d3eb;
 }
+
+@media screen and (max-width:700px) {
+    ul {
+        width: 100%;
+        margin: 0 auto;
+        padding-top: 30px;
+    }
+    ul li {
+        list-style-type: none;
+    }
+    ul p {
+        color: #f1f1f1;
+        font-size: 14px;
+    }
+    ul p a {
+        color: #75d3eb;
+    }
+}
+
 @media screen and (max-width:1000px) {
     /* On remet width et height inital pour rendre responsive avec viewbox */
     #graphique svg {
