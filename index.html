@@ -27,7 +27,6 @@
   <p>Vous pouvez survoler les départements pour avoir le nombre de cas.</p>
 </div>
 
-
 <p class="credits ctop">Github  : <a target="_blank" href="https://github.com/Ziratsu/CoronavirusGraph">Repo Github</a></p></li>
 <p class="credits">Youtube : <a target="_blank" href="https://www.youtube.com/channel/UCMFbNXUkjSUJ6WC20tGTzJg">YT Développement Web</a></p></li>
 <p class="credits">Twitter : <a target="_blank" href="https://twitter.com/Ledesignerduweb">Twitter</a></p></li>
@@ -93,6 +92,8 @@
                .attr("fill", "white")
    
                var tickLabels = [
+               '01 / 02',
+               '02 / 02',
                '03 / 02',
                '04 / 02',
                '05 / 02',
@@ -123,7 +124,7 @@
                '01 / 03',
                '02 / 03',
                '03 / 03',
-               '03 / 04'
+               '04 / 03'
               ]
 
         // X
@@ -165,11 +166,11 @@
           .attr("r", 5)
           .style('cursor', 'pointer')
           .attr("fill", "crimson")
-          .on("mouseover", function(d) {		
+          .on("mouseover", function(d, i) {		
             div.transition()		
                 .duration(200)		
                 .style("opacity", .9);		
-            div	.html("Cas :" + d.value)	
+            div	.html("Cas : " + d.value + "<br/>" + "Date :" + tickLabels[i])	
                 .style("left", (d3.event.pageX) + "px")		
                 .style("top", (d3.event.pageY - 28) + "px");	
             })					
@@ -268,7 +269,8 @@ var div = d3.select("body").append("div")
               + "<b>Département : </b>" + e.NOM_DEPT + "<br>"
               + "<b>Infectés : </b>" + e.POP + "<br>")
             .style("left", (d3.event.pageX + 30) + "px")     
-            .style("top", (d3.event.pageY - 30) + "px");
+            .style("top", (d3.event.pageY - 30) + "px")
+            .style("height", "auto");
         })
         .on("mouseout", function(d) {
           div.style("opacity", 0);
@@ -296,7 +298,7 @@ var div = d3.select("body").append("div")
           "NB_ARRONDS":"4",
           "NB_CANTONS":"43",
           "NB_COMMUNES":"419",
-          "POP":"0"},
+          "POP":"4"},
           
           {"CODE_REG":"22",
           "NOM_REGION":"Picardie",
@@ -404,7 +406,7 @@ var div = d3.select("body").append("div")
           "NB_ARRONDS":"4",
           "NB_CANTONS":"57",
           "NB_COMMUNES":"119",
-          "POP":"0"},
+          "POP":"9"},
   
           {"CODE_REG":"25",
           "NOM_REGION":"Basse-Normandie",
@@ -467,7 +469,7 @@ var div = d3.select("body").append("div")
           "NB_ARRONDS":"2",
           "NB_CANTONS":"22",
           "NB_COMMUNES":"124",
-          "POP":"0"},
+          "POP":"3"},
   
   
           {"CODE_REG":"94",
@@ -596,7 +598,7 @@ var div = d3.select("body").append("div")
           "NB_ARRONDS":"6",
           "NB_CANTONS":"63",
           "NB_COMMUNES":"542",
-          "POP":"2"},
+          "POP":"6"},
   
           {"CODE_REG":"91",
           "NOM_REGION":"Languedoc-Roussillon",
@@ -798,7 +800,7 @@ var div = d3.select("body").append("div")
           "NB_ARRONDS":"3",
           "NB_CANTONS":"42",
           "NB_COMMUNES":"261",
-          "POP":"13"},
+          "POP":"22"},
           
           {"CODE_REG":"41",
           "NOM_REGION":"Lorraine",
@@ -859,7 +861,7 @@ var div = d3.select("body").append("div")
           "NB_ARRONDS":"5",
           "NB_CANTONS":"61",
           "NB_COMMUNES":"470",
-          "POP":"0"},
+          "POP":"63"},
           
           {"CODE_REG":"72",
           "NOM_REGION":"Aquitaine",
@@ -892,7 +894,7 @@ var div = d3.select("body").append("div")
           "NB_ARRONDS":"7",
           "NB_CANTONS":"44",
           "NB_COMMUNES":"527",
-          "POP":"5"},
+          "POP":"84"},
           
           {"CODE_REG":"42",
           "NOM_REGION":"Alsace",
@@ -910,7 +912,7 @@ var div = d3.select("body").append("div")
           "NB_ARRONDS":"2",
           "NB_CANTONS":"54",
           "NB_COMMUNES":"293",
-          "POP":"0"},
+          "POP":"25"},
           
           {"CODE_REG":"43",
           "NOM_REGION":"Franche-Comté",
@@ -931,7 +933,8 @@ var div = d3.select("body").append("div")
           "POP":"0"},
           
           {"CODE_REG":"52",
-          "NOM_REGION":"Pays de la Loire","CODE_DEPT":"72",
+          "NOM_REGION":"Pays de la Loire",
+          "CODE_DEPT":"72",
           "NOM_DEPT":"Sarthe",
           "NB_ARRONDS":"3",
           "NB_CANTONS":"40",
@@ -963,7 +966,7 @@ var div = d3.select("body").append("div")
           "NB_ARRONDS":"1",
           "NB_CANTONS":"20",
           "NB_COMMUNES":"1",
-          "POP":"3"},
+          "POP":"55"},
   
           {"CODE_REG":"23",
           "NOM_REGION":"Haute-Normandie",
@@ -1044,12 +1047,13 @@ var div = d3.select("body").append("div")
           "POP":"0"},
           
           {"CODE_REG":"52",
-          "NOM_REGION":"Pays de la Loire","CODE_DEPT":"85",
+          "NOM_REGION":"Pays de la Loire",
+          "CODE_DEPT":"85",
           "NOM_DEPT":"Vendée",
           "NB_ARRONDS":"3",
           "NB_CANTONS":"31",
           "NB_COMMUNES":"282",
-          "POP":"0"},
+          "POP":"8"},
           
           {"CODE_REG":"54",
           "NOM_REGION":"Poitou-Charentes","CODE_DEPT":"86",
@@ -1110,7 +1114,7 @@ var div = d3.select("body").append("div")
           "NB_ARRONDS":"3",
           "NB_CANTONS":"45",
           "NB_COMMUNES":"36",
-          "POP":"0"},
+          "POP":"6"},
           
           {"CODE_REG":"11",
           "NOM_REGION":"Île-de-France",
@@ -1119,7 +1123,7 @@ var div = d3.select("body").append("div")
           "NB_ARRONDS":"3",
           "NB_CANTONS":"40",
           "NB_COMMUNES":"40",
-          "POP":"2"},
+          "POP":"7"},
           
           {"CODE_REG":"11",
           "NOM_REGION":"Île-de-France",
@@ -1128,7 +1132,7 @@ var div = d3.select("body").append("div")
           "NB_ARRONDS":"3",
           "NB_CANTONS":"49",
           "NB_COMMUNES":"47",
-          "POP":"0"},
+          "POP":"6"},
           
           {"CODE_REG":"11",
           "NOM_REGION":"Île-de-France",
