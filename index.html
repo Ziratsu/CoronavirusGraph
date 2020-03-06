@@ -83,7 +83,7 @@
         .call(d3.axisBottom(x));
 
       var y = d3.scaleLinear()
-        .domain( [0, 300])
+        .domain( [0, 500])
         .range([ height, 0 ]);
         
         const groupeY = svg.append("g")
@@ -101,7 +101,6 @@
                .attr("fill", "white")
    
                var tickLabels = [
-               '01 / 02',
                '02 / 02',
                '03 / 02',
                '04 / 02',
@@ -133,7 +132,8 @@
                '01 / 03',
                '02 / 03',
                '03 / 03',
-               '04 / 03'
+               '04 / 03',
+               '05 / 03'
               ]
 
         // X
